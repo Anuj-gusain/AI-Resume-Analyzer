@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "../components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card";
 import {
   Brain,
   LogOut,
@@ -11,9 +11,10 @@ import {
   BarChart3,
   ChevronRight,
 } from "lucide-react";
-import ResumeUploader from "@/components/ResumeUploader";
-import AnalysisResult from "@/components/AnalysisResult";
-import { useToast } from "@/hooks/use-toast";
+import ResumeUploader from "../components/ResumeUploader";
+import AnalysisResult from "../components/AnalysisResult";
+import { useToast } from "../hooks/use-toast";
+import { API } from "@/config";
 
 export default function DashboardPage() {
   const navigate = useNavigate();
@@ -37,7 +38,7 @@ export default function DashboardPage() {
       setLoadingHistory(true);
 
       const response = await fetch(
-        "http://localhost:5000/api/resume/history",
+        `${API}/api/resume/history`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -75,7 +76,7 @@ export default function DashboardPage() {
   const loadAnalysis = async (id: string) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/resume/${id}`,
+        `${API}/api/resume/${id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

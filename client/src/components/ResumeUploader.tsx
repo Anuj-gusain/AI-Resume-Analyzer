@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Upload, FileText, X, Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { API } from "@/config";
 
 interface Props {
   onAnalysisComplete: (analysis: any, id: string) => void;
@@ -72,7 +73,7 @@ export default function ResumeUploader({ onAnalysisComplete }: Props) {
       formData.append("jobRole", jobRole.trim() || "");
 
       const response = await fetch(
-        "http://localhost:5000/api/resume/analyze",
+        `${API}/api/resume/analyze`,
         {
           method: "POST",
           headers: {

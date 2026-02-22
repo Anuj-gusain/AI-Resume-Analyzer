@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Brain, Mail, Lock, Eye, EyeOff } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { API } from "@/config";
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -20,7 +21,7 @@ export default function LoginPage() {
     setLoading(true);
 
     try {
-      const response = await fetch("http://localhost:5000/api/auth/login", {
+      const response = await fetch(`${API}/api/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
